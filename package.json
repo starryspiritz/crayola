@@ -4,7 +4,7 @@
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"
   },
-  "name": "kat-discord-bot",
+  "name": "crayola",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
