@@ -51,7 +51,7 @@ setInterval(async () => {
             .setColor(0xffd200)
             .setTitle(`🎟️  Your monthly tickets have arrived!`)
             .setDescription(`Please note that if you have one already, you won't be granted another until it's used.`);
-        const targetChannel = await interaction.guild.channels.fetch(`1541504281369256057`);
+        const targetChannel = await interaction.guild.channels.fetch(`1304456647690682419`);
         targetChannel.send({ content: `<@&1304456099315060767> <@&1304460169526116374>`, embeds: [ticketDispurse] });
         }
 }, 1000);
