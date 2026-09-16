@@ -39,7 +39,6 @@ client.once(Events.ClientReady, async (readyClient) => {
 setInterval(async () => {
     const date = new Date();
     const currentDay = date.getDate();
-    console.log(currentDay);
     if (currentDay == 15) {
         const allEntries = await Tags.findAll({ where: { ticket: 0} });
         var count = 0;
@@ -54,7 +53,7 @@ setInterval(async () => {
         const targetChannel = await interaction.guild.channels.fetch(`1304456647690682419`);
         targetChannel.send({ content: `<@&1304456099315060767> <@&1304460169526116374>`, embeds: [ticketDispurse] });
         }
-}, 1000);
+}, 86400000);
 
 client.commands = new Collection();
 
