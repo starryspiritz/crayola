@@ -79,21 +79,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
     
     const { commandName } = interaction;
 
-    if (commandName === 'disperse-tickets') {
-        const allEntries = await Tags.findAll({ where: { ticket: 0} });
-        var count = 0;
-        for (count in allEntries) {
-            await Tags.update({ ticket: 1 }, { where: { username: allEntries[count].username }});
-            count = count + 1;
-        }
-        const ticketDispurse = new EmbedBuilder()
-            .setColor(0xffd200)
-            .setTitle(`🎟️  Your monthly tickets have arrived!`)
-            .setDescription(`Please note that if you have one already, you won't be granted another until it's used.`);
-        const targetChannel = await interaction.guild.channels.fetch(`1541504281369256057`);
-        targetChannel.send({ content: `<@&1304456099315060767> <@&1304460169526116374>`, embeds: [ticketDispurse] });
-    }
-
     if(commandName === 'ticket') {
         if (interaction.options.getSubcommand() === 'view') {
             const target = interaction.options.getUser('user');
@@ -119,7 +104,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
                                         .setColor(0xb2aafd)
                                         .setAuthor({ name: `${target.displayName} (@${target.username})`, iconURL: target.displayAvatarURL()})
                                         .setTitle(`❎  ${target.displayName} doesn't have a ticket right now.`)
-                                        .setDescription(`They'll receive their next ticket in some amount of days.`)
                                     await interaction.reply({
                                         embeds: [ticketDetails],
                                     })
@@ -177,7 +161,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
                                         .setColor(0xb2aafd)
                                         .setAuthor({ name: `${interaction.user.displayName} (@${interaction.user.username})`, iconURL: interaction.user.displayAvatarURL()})
                                         .setTitle(`❎  You don't have a ticket right now.`)
-                                        .setDescription(`You'll receive your next ticket in some amount of days.`)
                                     await interaction.reply({
                                         embeds: [ticketDetails],
                                     })
@@ -247,7 +230,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
                                     .setColor(0xb2aafd)
                                     .setAuthor({ name: `${interaction.user.displayName} (@${interaction.user.username})`, iconURL: interaction.user.displayAvatarURL()})
                                     .setTitle(`❎  You don't have a ticket right now.`)
-                                    .setDescription(`You'll receive your next ticket in some amount of days.`)
                                 await interaction.reply({
                                     embeds: [ticketDetails],
                                 })
